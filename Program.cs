@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using CsvHelper.Configuration;
 using M0LTE.AdifLib;
 using System.Globalization;
 
@@ -17,7 +18,7 @@ if (!File.Exists(csvFile))
 
 using var fileStream = File.OpenRead(csvFile);
 using var reader = new StreamReader(fileStream);
-using var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture);
+using var csvReader = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture) { MissingFieldFound = null });
 
 csvReader.Read();
 if (!csvReader.ReadHeader())
@@ -45,6 +46,8 @@ while (csvReader.Read())
         TxPower = csvReader["Power"],
         QsoStart = DateTime.ParseExact(csvReader["Date"] + csvReader["UTC-On"], "yyyyMMddHHmmss", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal),
         QsoEnd = DateTime.ParseExact(csvReader["Date"] + csvReader["UTC-Off"], "yyyyMMddHHmmss", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal),
+        GridSquare = csvReader["Locator"],
+        MyGridSquare = csvReader["StationLocator"]
     };
 
     adifFile.Records.Add(record);

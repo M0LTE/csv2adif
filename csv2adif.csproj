@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AdifLib" Version="1.6.0" />
+    <PackageReference Include="AdifLib" Version="1.6.2" />
     <PackageReference Include="CsvHelper" Version="30.0.1" />
   </ItemGroup>
 

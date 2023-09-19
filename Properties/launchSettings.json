@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "csv2adif": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\tomandels\\Downloads\\log_GM5AUG_20230919.csv"
+    }
+  }
+}
